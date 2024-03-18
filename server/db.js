@@ -28,7 +28,7 @@ const createTables = async() => {
     await client.query(SQL); 
 }; 
 
-async function createProduct () {
+const createProduct = async ({ name })=> {
     const SQL = `
     INSERT INTO products(id, name) VALUES ($1, $2) RETURNING * 
   `;
@@ -36,7 +36,7 @@ async function createProduct () {
   return response.rows[0];
 };
 
-async function createUser({ username, password }) { // - creates a user given a username and password (we can use bcrypt to hash)
+const createUser = async({ username, password })=> { // - creates a user given a username and password (we can use bcrypt to hash)
     const SQL = `
     INSERT INTO users(id, username, password) VALUES($1, $2, $3) RETURNING *
     `; 

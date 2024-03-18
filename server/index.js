@@ -14,8 +14,8 @@ const {
     fetchUsers,
     fetchProducts,
     createFavorite,
-    destroyFavorite,
     fetchFavorites,
+    destroyFavorite
 } = require('./db')
 const express = require('express'); 
 const app = express();
@@ -54,7 +54,7 @@ app.get('/api/users/:id/favorites', async(req, res, next)=> {
 //DELETE /api/users/:userID/favorites/:id - deletes a favorite for a user, returns a STATUS 204. 
 app.delete('/api/uses/:userId/favorites/:id', async(req, res, next)=> {
 try {
-  await deleteFavorite({ user_id: req.params.userId, id: req.params.id });
+  await destroyFavorite({ user_id: req.params.userId, id: req.params.id });
   res.sendStatus(204);
 }
 catch(ex){
