@@ -110,7 +110,10 @@ app.post("/api/users/:id/favorites", isLoggedIn, async (req, res, next) => {
       createFavorite({ user_id: lucy.id, product_id: smartPhone.id}),
       createFavorite({ user_id: yasha.id, product_id: earphones.id}),
       createFavorite({ user_id: heff.id, product_id: charger.id}),
-    ]);  
+    ]); 
+
+  const port = process.env.PORT || 3000;
+  app.listen(port, ()=> console.log(`listening on port ${port}`));
 //Seed the DB and complete the implementation of my data layer. 
 
 init();
